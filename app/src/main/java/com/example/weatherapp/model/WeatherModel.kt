@@ -1,4 +1,4 @@
-package com.example.weatherapp.presentation.model
+package com.example.weatherapp.model
 
 
 
