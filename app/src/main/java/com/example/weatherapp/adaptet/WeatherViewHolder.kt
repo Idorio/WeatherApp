@@ -7,12 +7,12 @@ import com.example.weatherapp.model.WeatherModel
 
 class WeatherViewHolder(private val view: View): RecyclerView.ViewHolder(view) {
 
-    val binding = ItemListBinding.bind(view)
+    private  val binding = ItemListBinding.bind(view)
 
-    fun bind(item: WeatherModel) = with(binding){
-        tvDate.text = item.time
-        tvCondition.text= item.condition
-        tvTemp.text= item.currentTemp
+    fun bind(itemWeather: WeatherModel) = with(binding){
+        tvDate.text = itemWeather.time
+        tvCondition.text= itemWeather.condition
+        tvTemp.text= itemWeather.currentTemp
     }
 
 }

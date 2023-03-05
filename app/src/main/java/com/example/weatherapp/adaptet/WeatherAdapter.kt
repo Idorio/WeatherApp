@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weatherapp.R
-import com.example.weatherapp.databinding.ItemListBinding
 import com.example.weatherapp.model.WeatherModel
 
 class WeatherAdapter(view: View) : RecyclerView.Adapter<WeatherViewHolder>() {
