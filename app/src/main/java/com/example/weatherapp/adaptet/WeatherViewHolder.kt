@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.weatherapp.databinding.ItemListBinding
 import com.example.weatherapp.model.WeatherModel
 
-class WeatherViewHolder(private val view: View): RecyclerView.ViewHolder(view) {
+class WeatherViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
     private  val binding = ItemListBinding.bind(view)
 

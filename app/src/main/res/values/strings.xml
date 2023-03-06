@@ -8,4 +8,6 @@
     <string name="refresh">refresh</string>
     <string name="image_status_weather">status</string>
     <string name="empty">Empty</string>
+    <string name="enter_the_name_of_the_city">Enter the name of the city</string>
+    <string name="confirm">Confirm</string>
 </resources>
