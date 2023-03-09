@@ -1,17 +1,15 @@
-package com.example.weatherapp.adaptet
+package com.example.weatherapp.adapter
 
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weatherapp.R
 import com.example.weatherapp.model.WeatherModel
 
-class WeatherAdapter(view: View) : RecyclerView.Adapter<WeatherViewHolder>() {
+class WeatherAdapter() : RecyclerView.Adapter<WeatherViewHolder>() {
 
     private var listItem = mutableListOf<WeatherModel>()
-
     fun submitList(list: MutableList<WeatherModel>){
         this.listItem = list
     }
@@ -21,13 +19,11 @@ class WeatherAdapter(view: View) : RecyclerView.Adapter<WeatherViewHolder>() {
             .inflate(R.layout.item_list,parent,false)
         return WeatherViewHolder(view)
     }
-
+        override fun onBindViewHolder(holder: WeatherViewHolder, position: Int) {
+        holder.bind(listItem[position])
+    }
     override fun getItemCount(): Int {
         return listItem.size
-    }
-
-    override fun onBindViewHolder(holder: WeatherViewHolder, position: Int) {
-        holder.bind(listItem[position])
     }
 
 }
