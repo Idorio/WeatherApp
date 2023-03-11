@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.example.weatherapp.databinding.FragmentSettingBinding
+import dagger.hilt.android.AndroidEntryPoint
 
 
 class SettingsFragment : Fragment() {
@@ -24,15 +25,12 @@ class SettingsFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.btnGoToMainFragment.setOnClickListener {
-            viewModel.enterCity(
-                binding.etText.text.toString()
-            )
-        }
+
+
         viewModel.nav.observe(viewLifecycleOwner){
             parentFragmentManager
                 .beginTransaction()
-                .replace(R.id.activity_container, MainFragment())
+                .replace(R.id.activity_container, WeatherFragment())
                 .commit()
         }
     }

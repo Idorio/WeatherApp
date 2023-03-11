@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/weather"
     android:alpha="0.8"
-    tools:context=".MainFragment">
+    tools:context=".WeatherFragment">
 
 
 
@@ -65,7 +65,6 @@
                 android:id="@+id/tvCurrentTemp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1°C"
                 android:textColor="@color/white"
                 android:textSize="60sp"
                 app:layout_constraintEnd_toEndOf="parent"
