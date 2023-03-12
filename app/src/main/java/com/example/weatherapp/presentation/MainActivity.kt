@@ -6,6 +6,7 @@ import android.os.PersistableBundle
 import android.view.LayoutInflater
 import com.example.weatherapp.R
 import com.example.weatherapp.SettingsFragment
+import com.example.weatherapp.WeatherFragment
 import com.example.weatherapp.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
@@ -19,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-        supportFragmentManager.beginTransaction().replace(R.id.activity_container,SettingsFragment())
+        supportFragmentManager.beginTransaction().replace(R.id.activity_container,WeatherFragment())
             .commit()
     }
 

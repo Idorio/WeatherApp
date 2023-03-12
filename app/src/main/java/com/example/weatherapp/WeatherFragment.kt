@@ -8,13 +8,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.weatherapp.presentation.adapter.WeatherAdapter
-import com.example.weatherapp.databinding.FragmentMainBinding
+
+import com.example.weatherapp.databinding.FragmentWeatherBinding
 import com.example.weatherapp.model.WeatherModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class WeatherFragment : Fragment() {
-    private  var _binding: FragmentMainBinding? = null
+    private  var _binding: FragmentWeatherBinding? = null
     private val binding get() = _binding!!
     private val viewModel: WeatherViewModel by viewModels()
 
@@ -24,16 +25,16 @@ class WeatherFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding= FragmentMainBinding.inflate(inflater,container,false)
+        _binding= FragmentWeatherBinding.inflate(inflater,container,false)
         return binding.root
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initRcView()
 
-        viewModel.weatherResp.observe(viewLifecycleOwner) { weather ->
+        viewModel.temp.observe(viewLifecycleOwner) { weather ->
             binding.apply {
-                tvCurrentTemp.text = weather.currentTemp
+                tvCurrentTemp.text = weather.temp
             }
         }
     }

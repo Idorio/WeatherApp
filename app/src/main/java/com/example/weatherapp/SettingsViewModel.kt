@@ -11,8 +11,9 @@ class SettingsViewModel : ViewModel() {
     private val _nav = MutableLiveData<Unit?>()
     val nav: LiveData<Unit?> = _nav
 
-//    fun enterCity(){
+//    fun enterCity() {
 //
 //        _nav.value = Unit
-
-   }
+//
+//    }
+}

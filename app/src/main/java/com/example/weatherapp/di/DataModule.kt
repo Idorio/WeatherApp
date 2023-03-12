@@ -1,8 +1,11 @@
 package com.example.weatherapp.di
 
+import com.example.weatherapp.data.repositotyImpl.WeatherRepositoryImpl
 import com.example.weatherapp.data.service.ApiService
+import com.example.weatherapp.repository.WeatherRepository
 
 import com.example.weatherapp.utils.Constants.BASE_URL
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,6 +18,11 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 abstract class DataModule {
+
+    @Binds
+    abstract fun bindWeatherRepository(
+        weatherRepositoryImpl: WeatherRepositoryImpl
+    ): WeatherRepository
 
 
     companion object {
