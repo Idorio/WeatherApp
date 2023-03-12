@@ -1,31 +1,37 @@
 package com.example.weatherapp
 
-import android.app.Application
-import android.util.Log
+
 import androidx.lifecycle.*
-import com.example.weatherapp.data.model.WeatherResponse
+import com.example.weatherapp.domain.WeatherInteractor
 import com.example.weatherapp.model.WeatherModel
-import com.example.weatherapp.repository.WeatherInteractor
-import com.example.weatherapp.repository.WeatherRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class WeatherViewModel @Inject constructor(private val weatherInteractor: WeatherInteractor, application: Application) : ViewModel() {
-    private val _temp = MutableLiveData<WeatherResponse>()
-    val temp:LiveData<WeatherResponse> get()=_temp
+class WeatherViewModel @Inject constructor(private val weatherRepository: WeatherInteractor) :
+    ViewModel() {
+    private val _temp = MutableLiveData<List<WeatherModel>>()
+    val temp: LiveData<List<WeatherModel>> get() = _temp
+
+    private val _error = MutableLiveData<String>()
+    val error : LiveData<String> get() = _error
 
 
-    val liveDataList = MutableLiveData<List<WeatherModel>>()
+    fun getWeather() = viewModelScope.launch {
+            try {
+                val current = weatherRepository.getWeather()
+                _temp.value = current
+            }catch (e: Exception){
+                _error.value = e.message.toString()
+            }
+
+            }
+        }
 
 
-    fun getWeather(){
 
 
-    }
-
-}
 
 
 

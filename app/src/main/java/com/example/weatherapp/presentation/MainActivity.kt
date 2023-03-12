@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-        supportFragmentManager.beginTransaction().replace(R.id.activity_container,WeatherFragment())
+        supportFragmentManager.beginTransaction().replace(R.id.activity_container,SettingsFragment())
             .commit()
 
     }

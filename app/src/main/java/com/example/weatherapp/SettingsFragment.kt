@@ -26,6 +26,12 @@ class SettingsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
+        binding.btnGoToMainFragment.setOnClickListener{
+            viewModel.enterCity(
+                binding.etText.text.toString()
+            )
+        }
+
 
         viewModel.nav.observe(viewLifecycleOwner){
             parentFragmentManager

@@ -11,9 +11,16 @@ class SettingsViewModel : ViewModel() {
     private val _nav = MutableLiveData<Unit?>()
     val nav: LiveData<Unit?> = _nav
 
-//    fun enterCity() {
-//
-//        _nav.value = Unit
-//
-//    }
+    private val _error = MutableLiveData<String>()
+    val error: LiveData<String> = _error
+
+    fun enterCity(city:String) {
+        try {
+            _nav.value = Unit
+        }catch (e:Exception){
+            _error.value = "This city already exist"
+        }
+
+
+    }
 }
