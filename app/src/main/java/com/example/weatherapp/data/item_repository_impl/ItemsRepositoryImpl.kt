@@ -13,7 +13,7 @@ class ItemsRepositoryImpl@Inject constructor(private val apiService: ApiService)
             val response = apiService.getWeather()
             response.body()?.sampleList?.let {
                 it.map {
-                    WeatherModel(it.currentTemp)
+                    WeatherModel(it.currentTemp,it.city)
                 }
             } ?: kotlin.run {
                 emptyList()

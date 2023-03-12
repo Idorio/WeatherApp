@@ -44,11 +44,8 @@ class WeatherFragment : Fragment() {
         adapter = WeatherAdapter()
         rcView.adapter = adapter
         val list = mutableListOf<WeatherModel>(
-            WeatherModel(""),
-            WeatherModel(""),
-            WeatherModel(""),
-            WeatherModel(""),
-            WeatherModel(""),
+            WeatherModel("","London")
+
         )
         adapter.submitList(list)
     }

@@ -9,6 +9,8 @@ data class WeatherResponse(
 val sampleList: List<Sample>)
 
 data class Sample (
-    @SerializedName("Temp")
-    val currentTemp: String
+    @SerializedName("temp")
+    val currentTemp: String,
+    @SerializedName("city")
+    val city: String
 )

@@ -15,5 +15,8 @@ interface ApiService {
     @GET("/forecast.json")
     suspend fun getWeather(
         @Query("apiKey")
-        apiKey: String = API_KEY): Response<WeatherResponse>
+        apiKey: String = API_KEY,
+        @Query("q")
+        q:String = "London")
+    : Response<WeatherResponse>
 }
