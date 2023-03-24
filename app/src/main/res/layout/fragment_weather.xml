@@ -25,10 +25,10 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/tvCont"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
 
-            >
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/tvData"
@@ -36,25 +36,24 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:text="@string/_03_03_2023_19_00"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/imWeather"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:contentDescription="@string/image_status_weather"
-                android:src="@drawable/ic_launcher_foreground"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+
+
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/tvCity"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="@string/Minsk"
+
                 android:textColor="@color/white"
                 android:textSize="35sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -65,17 +64,18 @@
                 android:id="@+id/tvCurrentTemp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
                 android:textColor="@color/white"
                 android:textSize="60sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView3" />
+                app:layout_constraintTop_toBottomOf="@+id/tvCity" />
 
             <TextView
                 android:id="@+id/tvCondition"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cold"
+
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -87,7 +87,7 @@
                 android:id="@+id/tvMaxMinTemp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="3°C/-3°C"
+
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -119,7 +119,6 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/ibSearch" />
-
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

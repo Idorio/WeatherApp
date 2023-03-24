@@ -1,10 +1,7 @@
 package com.example.weatherapp.model
 
-
-
 data class WeatherModel(
-
-    val currentTemp: String,
-    val city: String
-
+    val current: Current,
+    val forecast: Forecast,
+    val location: Location
 )

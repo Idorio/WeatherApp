@@ -1,33 +1,72 @@
 package com.example.weatherapp
 
 
+
 import androidx.lifecycle.*
-import com.example.weatherapp.domain.WeatherInteractor
+
+
+
+
+import com.example.weatherapp.domain.WeatherInteracrot
 import com.example.weatherapp.model.WeatherModel
+import com.example.weatherapp.utils.weatherResponse
+
+import com.example.weatherapp.utils.Resources
+
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+
+
 @HiltViewModel
-class WeatherViewModel @Inject constructor(private val weatherRepository: WeatherInteractor) :
+class WeatherViewModel @Inject constructor(private val weatherInteracrot: WeatherInteracrot) :
     ViewModel() {
-    private val _temp = MutableLiveData<List<WeatherModel>>()
-    val temp: LiveData<List<WeatherModel>> get() = _temp
+
+
+    private val _currentTemp = MutableLiveData<Resources<WeatherModel>?>()
+    val currentTemp: MutableLiveData<Resources<WeatherModel>?> get() = _currentTemp
+
+    private val _location = MutableLiveData<Resources<WeatherModel>>()
+    val location: MutableLiveData<Resources<WeatherModel>> get() = _location
+
+    private val _currentDate = MutableLiveData<Resources<WeatherModel>?>()
+    val currentDate: MutableLiveData<Resources<WeatherModel>?> get() = _currentDate
+
 
     private val _error = MutableLiveData<String>()
-    val error : LiveData<String> get() = _error
+
+    init {
+        getWeather()
+
+    }
 
 
-    fun getWeather() = viewModelScope.launch {
-            try {
-                val current = weatherRepository.getWeather()
-                _temp.value = current
-            }catch (e: Exception){
-                _error.value = e.message.toString()
-            }
+    private fun getWeather() {
+        viewModelScope.launch {
 
-            }
+            val response = weatherInteracrot.getWeather()
+            _currentTemp.postValue(weatherResponse(response))
         }
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
