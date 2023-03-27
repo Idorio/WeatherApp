@@ -1,5 +1,8 @@
-package com.example.weatherapp.model
+package com.example.weatherapp.domain.model
 
+import androidx.annotation.Keep
+
+@Keep
 data class Day(
     val avghumidity: Double,
     val avgtemp_c: Double,

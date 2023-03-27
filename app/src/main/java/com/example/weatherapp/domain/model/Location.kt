@@ -1,5 +1,8 @@
-package com.example.weatherapp.model
+package com.example.weatherapp.domain.model
 
+import androidx.annotation.Keep
+
+@Keep
 data class Location(
     val country: String,
     val lat: Double,

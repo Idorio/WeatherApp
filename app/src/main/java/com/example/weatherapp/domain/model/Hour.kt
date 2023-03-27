@@ -1,5 +1,8 @@
-package com.example.weatherapp.model
+package com.example.weatherapp.domain.model
 
+import androidx.annotation.Keep
+
+@Keep
 data class Hour(
     val chance_of_rain: Int,
     val chance_of_snow: Int,

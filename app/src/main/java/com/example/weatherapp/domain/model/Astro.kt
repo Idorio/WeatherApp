@@ -1,5 +1,8 @@
-package com.example.weatherapp.model
+package com.example.weatherapp.domain.model
 
+import androidx.annotation.Keep
+
+@Keep
 data class Astro(
     val is_moon_up: Int,
     val is_sun_up: Int,

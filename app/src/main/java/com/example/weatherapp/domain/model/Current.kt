@@ -1,5 +1,9 @@
-package com.example.weatherapp.model
+package com.example.weatherapp.domain.model
 
+import androidx.annotation.Keep
+import kotlin.math.roundToInt
+
+@Keep
 data class Current(
     val cloud: Int,
     val condition: Condition,
@@ -15,7 +19,7 @@ data class Current(
     val precip_mm: Double,
     val pressure_in: Double,
     val pressure_mb: Double,
-    val temp_c: Int,
+    val temp_c: Double,
     val temp_f: Double,
     val uv: Double,
     val vis_km: Double,
@@ -24,4 +28,12 @@ data class Current(
     val wind_dir: String,
     val wind_kph: Double,
     val wind_mph: Double
-)
+) {
+    fun getCurrentDate(): String {
+        return last_updated.split(" ").first()
+    }
+
+    fun getTemperatureInCelsius(): String {
+        return "${temp_c.roundToInt()} °C"
+    }
+}
