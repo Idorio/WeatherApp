@@ -8,7 +8,7 @@ data class Current(
     val cloud: Int,
     val condition: Condition,
     val feelslike_c: Double,
-    val feelslike_f: Double,
+    val feelslike_f: String,
     val gust_kph: Double,
     val gust_mph: Double,
     val humidity: Int,

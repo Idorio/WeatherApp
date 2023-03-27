@@ -1,5 +1,6 @@
 package com.example.weatherapp.domain
 
+import com.example.weatherapp.domain.model.Current
 import com.example.weatherapp.domain.model.WeatherModel
 import com.example.weatherapp.utils.Resources
 import com.example.weatherapp.utils.weatherResponse
@@ -20,5 +21,9 @@ class WeatherInteractor @Inject constructor(
                 result = it
             }
         return result
+    }
+
+    suspend fun showData(): List<WeatherModel> {
+        return weatherRepository.showWeather()
     }
 }
