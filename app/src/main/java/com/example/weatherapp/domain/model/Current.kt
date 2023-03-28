@@ -1,6 +1,7 @@
 package com.example.weatherapp.domain.model
 
 import androidx.annotation.Keep
+import androidx.room.Embedded
 import kotlin.math.roundToInt
 
 @Keep

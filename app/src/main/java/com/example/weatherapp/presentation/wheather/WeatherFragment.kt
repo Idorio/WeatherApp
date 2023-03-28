@@ -1,18 +1,17 @@
 package com.example.weatherapp.presentation.wheather
 
+
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.weatherapp.R
-
-
+import com.example.weatherapp.data.model.WeatherResp
 import com.example.weatherapp.databinding.FragmentWeatherBinding
 import com.example.weatherapp.domain.model.WeatherModel
 import com.example.weatherapp.presentation.MainViewModel
@@ -20,8 +19,6 @@ import com.example.weatherapp.presentation.details.DetailsFragment
 import com.example.weatherapp.presentation.routes.AppRoutes
 import com.example.weatherapp.presentation.wheather.adapter.ForecastDayAdapter
 import com.example.weatherapp.utils.Resources
-
-
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -84,6 +81,7 @@ class WeatherFragment : Fragment() {
 
     private fun initViewModel() {
         viewModel.getWeather(city)
+        viewModel.showData(city)
         viewModel.currentTemp.observe(viewLifecycleOwner) { weatherModel ->
             binding.swipe.isRefreshing = false
             when (weatherModel) {
@@ -96,6 +94,7 @@ class WeatherFragment : Fragment() {
                 is Resources.Success -> {
                     parserModel(weatherModel.data)
                 }
+
             }
         }
     }

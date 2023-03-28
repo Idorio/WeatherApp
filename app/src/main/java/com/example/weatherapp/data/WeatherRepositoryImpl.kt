@@ -1,6 +1,7 @@
 package com.example.weatherapp.data
 
 
+import com.example.weatherapp.data.database.WeatherEntity
 import com.example.weatherapp.data.database.dao.WeatherDAO
 import com.example.weatherapp.data.service.ApiService
 import com.example.weatherapp.domain.WeatherRepository
@@ -12,17 +13,39 @@ import javax.inject.Inject
 
 class WeatherRepositoryImpl @Inject constructor(
     private val apiService: ApiService,
-    private val weatherDAO: WeatherDAO
+    private val weatherDAO: WeatherDAO,
 ) : WeatherRepository {
-     override suspend fun getWeather(city: String): Response<WeatherModel> {
-         return withContext(Dispatchers.IO) {
-             apiService.getWeather(city, "7ffea88483fb4e648a360906232403", 4)
-         }
-     }
-    override suspend fun showWeather(): List<WeatherModel> {
-        TODO("Not yet implemented")
+    override suspend fun getWeather(city: String): Response<WeatherModel> {
+        return withContext(Dispatchers.IO) {
+            val it = weatherDAO.getWeatherEntity()
+            apiService.getWeather(city, "7ffea88483fb4e648a360906232403", 4)
+            it.apply {
+                it.body()?.current?.temp_c
+            }
+        }
+    }
+    override suspend fun showWeather(city: String) {
+        return withContext(Dispatchers.IO) {
+            if (!weatherDAO.doesWeatherEntityExist()) {
+                val response = apiService.getWeather(city, "7ffea88483fb4e648a360906232403", 4)
+                response.body()?.current?.let {
+                    it.let {
+                        val weatherEntity =
+                            WeatherEntity(
+                                it.temp_c
+                            )
+                        weatherDAO.insertWeatherEntity(weatherEntity)
+                    }
+                }
+            }
+        }
     }
 }
+
+
+
+
+
 //verride suspend fun getData() {
 //    return withContext(Dispatchers.IO) {
 //

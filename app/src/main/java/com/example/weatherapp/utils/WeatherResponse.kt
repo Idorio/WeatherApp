@@ -1,6 +1,7 @@
 package com.example.weatherapp.utils
 
 
+import com.example.weatherapp.data.model.WeatherResp
 import com.example.weatherapp.domain.model.WeatherModel
 import retrofit2.Response
 

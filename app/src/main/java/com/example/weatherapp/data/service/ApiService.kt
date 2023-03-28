@@ -1,5 +1,7 @@
 package com.example.weatherapp.data.service
 
+import androidx.lifecycle.LiveData
+import com.example.weatherapp.data.model.WeatherResp
 import com.example.weatherapp.domain.model.WeatherModel
 
 import retrofit2.Response
