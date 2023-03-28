@@ -1,4 +1,4 @@
-package com.example.weatherapp.domain.model
+package com.example.weatherapp.data.service.model
 
 import androidx.annotation.Keep
 
@@ -24,4 +24,4 @@ data class Day(
     val totalprecip_mm: Double,
     val totalsnow_cm: Double
 
-)
+): java.io.Serializable

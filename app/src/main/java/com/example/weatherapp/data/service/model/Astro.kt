@@ -1,4 +1,4 @@
-package com.example.weatherapp.domain.model
+package com.example.weatherapp.data.service.model
 
 import androidx.annotation.Keep
 
@@ -12,4 +12,4 @@ data class Astro(
     val moonset: String,
     val sunrise: String,
     val sunset: String
-)
+): java.io.Serializable

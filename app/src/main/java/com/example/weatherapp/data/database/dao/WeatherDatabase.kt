@@ -4,13 +4,21 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.weatherapp.data.database.WeatherEntity
+import com.example.weatherapp.data.database.dao.model.ForecastDayDBModel
+import com.example.weatherapp.data.database.dao.model.WeatherDBModel
 
-@Database(entities = [WeatherEntity::class], version = 1, exportSchema = false)
-abstract class WeatherDatabase: RoomDatabase() {
+@Database(
+    entities = [WeatherDBModel::class, ForecastDayDBModel::class],
+    version = 1,
+    exportSchema = false
+)
+abstract class WeatherDatabase : RoomDatabase() {
 
-    abstract fun getWeatherDAO():WeatherDAO
-    companion object{
+    abstract fun getWeatherDAO(): WeatherDAO
+
+    abstract fun getForecastDayDAO(): ForecastDayDAO
+
+    companion object {
         private const val DATABASE_NAME = "DATABASE_NAME"
         private var DB_INSTANCE: WeatherDatabase? = null
 
@@ -22,6 +30,7 @@ abstract class WeatherDatabase: RoomDatabase() {
                     WeatherDatabase::class.java,
                     DATABASE_NAME
                 )
+                .fallbackToDestructiveMigration()
                 .build()
                 .also { DB_INSTANCE = it }
         }

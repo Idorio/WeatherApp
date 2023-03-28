@@ -1,8 +1,6 @@
 package com.example.weatherapp.data.service
 
-import androidx.lifecycle.LiveData
-import com.example.weatherapp.data.model.WeatherResp
-import com.example.weatherapp.domain.model.WeatherModel
+import com.example.weatherapp.data.service.model.WeatherModel
 
 import retrofit2.Response
 import retrofit2.http.GET

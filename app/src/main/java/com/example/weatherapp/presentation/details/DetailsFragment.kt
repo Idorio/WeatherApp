@@ -2,13 +2,12 @@ package com.example.weatherapp.presentation.details
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.weatherapp.R
 import com.example.weatherapp.databinding.FragmentDetailsBinding
-import com.example.weatherapp.domain.model.ForecastDay
+import com.example.weatherapp.data.service.model.ForecastDay
+import com.example.weatherapp.domain.model.ForecastDayEntity
 import com.example.weatherapp.presentation.details.adapter.DetailsAdapter
 
 
@@ -16,7 +15,7 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
 
     companion object{
         private const val MODEL_KEY = "model_key"
-        fun newInstance(model: ForecastDay): DetailsFragment{
+        fun newInstance(model: ForecastDayEntity): DetailsFragment{
             val args = Bundle().apply {
                 putSerializable(MODEL_KEY, model)
             }
@@ -28,7 +27,7 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
     }
 
     private val model by lazy {
-        arguments?.getSerializable(MODEL_KEY) as? ForecastDay
+        arguments?.getSerializable(MODEL_KEY) as? ForecastDayEntity
     }
     private val adapter by lazy {
         DetailsAdapter()

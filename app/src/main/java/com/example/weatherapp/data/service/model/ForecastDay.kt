@@ -1,6 +1,7 @@
-package com.example.weatherapp.domain.model
+package com.example.weatherapp.data.service.model
 
 import androidx.annotation.Keep
+import androidx.room.Embedded
 import java.io.Serializable
 
 @Keep
@@ -9,9 +10,6 @@ data class ForecastDay(
     val date: String,
     val dateEpoch: Int,
     val day: Day,
+    @Embedded
     val hour: List<Hour>
-) : Serializable {
-    fun getTemperatureRange(): String {
-        return "${day.mintemp_c.toInt()} °C/${day.maxtemp_c.toInt()}°C"
-    }
-}
+)

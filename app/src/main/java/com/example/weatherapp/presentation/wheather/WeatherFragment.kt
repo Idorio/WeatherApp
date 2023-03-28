@@ -10,12 +10,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.weatherapp.R
-import com.example.weatherapp.data.model.WeatherResp
 import com.example.weatherapp.databinding.FragmentWeatherBinding
-import com.example.weatherapp.domain.model.WeatherModel
+import com.example.weatherapp.domain.model.WeatherEntity
 import com.example.weatherapp.presentation.MainViewModel
-import com.example.weatherapp.presentation.details.DetailsFragment
 import com.example.weatherapp.presentation.routes.AppRoutes
 import com.example.weatherapp.presentation.wheather.adapter.ForecastDayAdapter
 import com.example.weatherapp.utils.Resources
@@ -81,7 +78,6 @@ class WeatherFragment : Fragment() {
 
     private fun initViewModel() {
         viewModel.getWeather(city)
-        viewModel.showData(city)
         viewModel.currentTemp.observe(viewLifecycleOwner) { weatherModel ->
             binding.swipe.isRefreshing = false
             when (weatherModel) {
@@ -99,15 +95,15 @@ class WeatherFragment : Fragment() {
         }
     }
 
-    private fun parserModel(model: WeatherModel) {
-        binding.tvCurrentTemp.text = model.current.getTemperatureInCelsius()
-        binding.tvCity.text = model.location.name
-        binding.tvCondition.text = model.current.condition.text
-        Picasso.get().load("https:" + model.current.condition.icon).into(binding.imWeather)
-        binding.tvData.text = model.current.last_updated
+    private fun parserModel(model: WeatherEntity) {
+        binding.tvCurrentTemp.text = model.temp_c.toString()
+        binding.tvCity.text = model.city
+        binding.tvCondition.text = model.text
+        Picasso.get().load("https:" + model.icon).into(binding.imWeather)
+        binding.tvData.text = model.lastUpdated
         binding.tvMaxMinTemp.text =
-            model.forecast.getTemperatureRange(model.current.getCurrentDate())
-        adapter.setItems(model.forecast.forecastday)
+            model.getTemperatureRange(model.getCurrentDate())
+        adapter.setItems(model.forecast)
     }
 }
 

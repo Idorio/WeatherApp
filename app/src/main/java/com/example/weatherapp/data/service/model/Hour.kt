@@ -1,12 +1,14 @@
-package com.example.weatherapp.domain.model
+package com.example.weatherapp.data.service.model
 
 import androidx.annotation.Keep
+import androidx.room.Embedded
 
 @Keep
 data class Hour(
     val chance_of_rain: Int,
     val chance_of_snow: Int,
     val cloud: Int,
+    @Embedded
     val condition: Condition,
     val dewpoint_c: Double,
     val dewpoint_f: Double,
@@ -37,4 +39,4 @@ data class Hour(
     val wind_mph: Double,
     val windchill_c: Double,
     val windchill_f: Double
-)
+): java.io.Serializable

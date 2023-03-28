@@ -1,12 +1,12 @@
-package com.example.weatherapp.domain.model
+package com.example.weatherapp.data.service.model
 
 import androidx.annotation.Keep
 import androidx.room.Embedded
-import kotlin.math.roundToInt
 
 @Keep
 data class Current(
     val cloud: Int,
+    @Embedded
     val condition: Condition,
     val feelslike_c: Double,
     val feelslike_f: String,
@@ -29,12 +29,4 @@ data class Current(
     val wind_dir: String,
     val wind_kph: Double,
     val wind_mph: Double
-) {
-    fun getCurrentDate(): String {
-        return last_updated.split(" ").first()
-    }
-
-    fun getTemperatureInCelsius(): String {
-        return "${temp_c.roundToInt()} °C"
-    }
-}
+)

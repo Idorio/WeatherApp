@@ -1,6 +1,7 @@
-package com.example.weatherapp.domain.model
+package com.example.weatherapp.data.service.model
 
 import androidx.annotation.Keep
+import java.io.Serializable
 
 @Keep
 data class Location(
@@ -12,4 +13,4 @@ data class Location(
     val name: String,
     val region: String,
     val tz_id: String
-)
+): Serializable

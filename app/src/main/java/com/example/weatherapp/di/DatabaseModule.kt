@@ -1,6 +1,7 @@
 package com.example.weatherapp.di
 
 import android.content.Context
+import com.example.weatherapp.data.database.dao.ForecastDayDAO
 import com.example.weatherapp.data.database.dao.WeatherDAO
 import com.example.weatherapp.data.database.dao.WeatherDatabase
 import dagger.Module
@@ -19,6 +20,12 @@ class DatabaseModule {
     @Provides
     fun provideWeatherDAO(weatherDatabase: WeatherDatabase): WeatherDAO {
         return weatherDatabase.getWeatherDAO()
+
+    }
+
+    @Provides
+    fun provideForecastDayDAO(weatherDatabase: WeatherDatabase): ForecastDayDAO {
+        return weatherDatabase.getForecastDayDAO()
 
     }
 
